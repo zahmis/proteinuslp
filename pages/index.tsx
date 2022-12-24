@@ -1,4 +1,5 @@
 import Head from "next/head";
+import styled from "styled-components";
 import { Inter } from "@next/font/google";
 // import styles from '../styles/Home.module.css'
 
@@ -8,11 +9,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Proteinus</title>
+        <Title>Proteinus</Title>
       </Head>
-      <main>
+      <Main>
         <div>ProteinusLp</div>
-      </main>
+      </Main>
     </>
   );
 }
+
+const Main = styled.main``;
+const Title = styled.div``;
