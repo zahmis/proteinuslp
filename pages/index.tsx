@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { Inter } from "@next/font/google";
+import { Navbar } from "../components/Navbar";
+// import { Inter } from "@next/font/google";
 // import styles from '../styles/Home.module.css'
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -12,6 +13,7 @@ export default function Home() {
         <Title>Proteinus</Title>
       </Head>
       <Main>
+        <Navbar />
         <div>ProteinusLp</div>
       </Main>
     </>
