@@ -1,20 +1,91 @@
 import Head from "next/head";
+import Image from "next/image";
 import styled from "styled-components";
 import { Navbar } from "../components/Navbar";
-// import { Inter } from "@next/font/google";
-// import styles from '../styles/Home.module.css'
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 
-// const inter = Inter({ subsets: ["latin"] });
+import "@splidejs/react-splide/css";
+import "@splidejs/react-splide/css/skyblue";
+import "@splidejs/react-splide/css/sea-green";
+import "@splidejs/react-splide/css/core";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <Title>Proteinus</Title>
-      </Head>
       <Main>
         <Navbar />
-        <div>ProteinusLp</div>
+        <SlideWrapper>
+          <Splide
+            options={{
+              type: "loop",
+              gap: "1rem",
+              autoplay: true,
+              pauseOnHover: false,
+              resetProgress: false,
+              width: 1000,
+              height: "100%",
+            }}
+            hasTrack={false}
+            aria-label="計画中"
+          >
+            <SplideTrack>
+              <SplideSlide key="proto1.jpg">
+                <Image
+                  src="/proto1.jpg"
+                  alt="Picture of the author"
+                  width={1000}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+              <SplideSlide key="proto2.jpg">
+                <Image
+                  src="/proto2.jpg"
+                  alt="Picture of the author"
+                  width={1200}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+              <SplideSlide key="proto3.jpg">
+                <Image
+                  src="/proto3.jpg"
+                  alt="Picture of the author"
+                  width={1200}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+              <SplideSlide key="proto4.jpg">
+                <Image
+                  src="/proto4.jpg"
+                  alt="Picture of the author"
+                  width={1000}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+              <SplideSlide key="proto6.jpg">
+                <Image
+                  src="/proto6.jpg"
+                  alt="Picture of the author"
+                  width={1000}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+              <SplideSlide key="proto7.jpg">
+                <Image
+                  src="/proto7.jpg"
+                  alt="Picture of the author"
+                  width={1000}
+                  height={500}
+                  style={{ objectFit: "contain" }}
+                />
+              </SplideSlide>
+            </SplideTrack>
+          </Splide>
+        </SlideWrapper>
       </Main>
     </>
   );
@@ -22,3 +93,7 @@ export default function Home() {
 
 const Main = styled.main``;
 const Title = styled.div``;
+const SlideWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
