@@ -1,42 +1,39 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { MdClose } from "react-icons/md"
-import { FiMenu } from "react-icons/fi"
-
+import { MdClose } from "react-icons/md";
+import { FiMenu } from "react-icons/fi";
 
 export const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false)  
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleToggle = () => {
-    setNavbarOpen(!navbarOpen)
-  }
+    setNavbarOpen(!navbarOpen);
+  };
 
   const closeMenu = () => {
-    setNavbarOpen(false)
-  }
-
+    setNavbarOpen(false);
+  };
 
   return (
     <NavbarContainer>
       <button onClick={handleToggle}>
         {navbarOpen ? (
-         <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
+          <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
         ) : (
-         <FiMenu style={{ color: "#7b7b7b", width: "40px", height: "40px" }} />
+          <FiMenu style={{ color: "#7b7b7b", width: "40px", height: "40px" }} />
         )}
       </button>
 
-      {navbarOpen&& (
-        <NavbarLinkContainer >
-        <NavbarLink>Home</NavbarLink>
-        <NavbarLink>Crafts</NavbarLink>
-        <NavbarLink>Future</NavbarLink>
-        <NavbarLink>About us</NavbarLink>
-        <NavbarLink>Media</NavbarLink>
-      </NavbarLinkContainer>
-      )}          
-    
-  </NavbarContainer>
+      {navbarOpen && (
+        <NavbarLinkContainer>
+          <NavbarLink>Home</NavbarLink>
+          <NavbarLink>Crafts</NavbarLink>
+          <NavbarLink>Future</NavbarLink>
+          <NavbarLink>About us</NavbarLink>
+          <NavbarLink>Media</NavbarLink>
+        </NavbarLinkContainer>
+      )}
+    </NavbarContainer>
   );
 };
 
@@ -61,6 +58,5 @@ export const NavbarLink = styled.div`
 `;
 
 const button = styled.button`
-text-align: right;
+  text-align: right;
 `;
-  
