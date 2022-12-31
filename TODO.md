@@ -1,7 +1,7 @@
 # TODO List
 
 - story book の導入
-- 必要なvsccodeプラグインを導入する
-    - gitLens
-    - ESLint
-    - Prettier
+- 必要な vsccode プラグインを導入する
+  - gitLens
+  - ESLint
+  - Prettier
