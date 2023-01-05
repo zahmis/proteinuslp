@@ -13,9 +13,6 @@ export const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
 
-  const closeMenu = () => {
-    setNavbarOpen(false);
-  };
 
   return (
     <NavbarContainer>
