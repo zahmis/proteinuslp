@@ -1,10 +1,40 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { MdClose } from "react-icons/md"
+import { FiMenu } from "react-icons/fi"
+import { useMediaQuery } from "react-responsive";
+
 import Image from "next/image";
 
 export const Navbar = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+
+
   return (
     <NavbarContainer>
+      <NavbarHumberger>
+        <Navbarbutton onClick={handleToggle}>
+          {navbarOpen ? (
+          <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
+          ) : (
+          <FiMenu style={{ color: "#7b7b7b", width: "40px", height: "40px" }} />
+          )}
+        </Navbarbutton>
+      </NavbarHumberger>
+
+      {navbarOpen && (
+        <NavbarLinkContainer>
+          <NavbarLink>Home</NavbarLink>
+          <NavbarLink>Crafts</NavbarLink>
+          <NavbarLink>Future</NavbarLink>
+          <NavbarLink>About us</NavbarLink>
+          <NavbarLink>Media</NavbarLink>
+        </NavbarLinkContainer>
+      )}
       <NavbarLogo>
         <Image
           src=""
@@ -52,4 +82,12 @@ export const NavbarLink = styled.div`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+`;
+
+const NavbarHumberger = styled.div`
+  float:rigth;
+`;
+
+const Navbarbutton = styled.div`
+  
 `;
