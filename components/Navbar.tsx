@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { MdClose } from "react-icons/md";
-import { FiMenu } from "react-icons/fi";
+import { MdClose } from "react-icons/md"
+import { FiMenu } from "react-icons/fi"
+import { useMediaQuery } from "react-responsive";
+
 
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -16,13 +18,15 @@ export const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <button onClick={handleToggle}>
-        {navbarOpen ? (
+      <NavbarHumberger>
+        <Navbarbutton onClick={handleToggle}>
+          {navbarOpen ? (
           <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
-        ) : (
+          ) : (
           <FiMenu style={{ color: "#7b7b7b", width: "40px", height: "40px" }} />
-        )}
-      </button>
+          )}
+        </Navbarbutton>
+      </NavbarHumberger>
 
       {navbarOpen && (
         <NavbarLinkContainer>
@@ -57,6 +61,10 @@ export const NavbarLink = styled.div`
   margin: 15px;
 `;
 
-const button = styled.button`
-  text-align: right;
+const NavbarHumberger = styled.div`
+  float:rigth;
+`;
+
+const Navbarbutton = styled.div`
+  
 `;
