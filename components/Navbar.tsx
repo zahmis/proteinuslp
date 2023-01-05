@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { MdClose } from "react-icons/md";
-import { FiMenu } from "react-icons/fi";
-import { useMediaQuery } from "react-responsive";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
+import { useMediaQuery } from 'react-responsive';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -26,34 +26,34 @@ export const Navbar = () => {
       )}
       <NavbarLogo>
         <Image
-          src=""
-          alt="proteinus-logo"
+          src=''
+          alt='proteinus-logo'
           width={60}
           height={60}
           style={{
-            backgroundColor: "#797979",
-            flexGrow: "1",
+            backgroundColor: '#797979',
+            flexGrow: '1',
           }}
         />
-        <NavbarLink> Proteinus</NavbarLink>
+        <NavbarLink>Proteinus</NavbarLink>
       </NavbarLogo>
       <NavbarLinkContainer>
-        <NavbarLink> Crafts</NavbarLink>
-        <NavbarLink> Future</NavbarLink>
-        <NavbarLink> About Us</NavbarLink>
-        <NavbarLink> Media</NavbarLink>
-        <NavbarLink> Information</NavbarLink>
+        <NavbarLink>Crafts</NavbarLink>
+        <NavbarLink>Future</NavbarLink>
+        <NavbarLink>About Us</NavbarLink>
+        <NavbarLink>Media</NavbarLink>
+        <NavbarLink>Information</NavbarLink>
 
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
         <NavbarHumberger>
           <Navbarbutton onClick={handleToggle}>
             {navbarOpen ? (
               <MdClose
-                style={{ color: "#fff", width: "40px", height: "40px" }}
+                style={{ color: '#fff', width: '40px', height: '40px' }}
               />
             ) : (
               <FiMenu
-                style={{ color: "#7b7b7b", width: "40px", height: "40px" }}
+                style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
               />
             )}
           </Navbarbutton>
