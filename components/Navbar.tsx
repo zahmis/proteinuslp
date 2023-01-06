@@ -1,14 +1,31 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
+import { useMediaQuery } from 'react-responsive';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 export const Navbar = () => {
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+
   const router = useRouter();
 
   return (
     <NavbarContainer>
+      {navbarOpen && (
+        <NavbarLinkContainer>
+          <NavbarLink>Crafts</NavbarLink>
+          <NavbarLink>Future</NavbarLink>
+          <NavbarLink>Media</NavbarLink>
+          <NavbarLink>About us</NavbarLink>
+        </NavbarLinkContainer>
+      )}
       <StyledLink href={'/'}>
         <NavbarLogo>
           <Image
@@ -59,6 +76,21 @@ export const Navbar = () => {
             About Us
           </NavbarLink>
         </StyledLink>
+
+        {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
+        <NavbarHumberger>
+          <Navbarbutton onClick={handleToggle}>
+            {navbarOpen ? (
+              <MdClose
+                style={{ color: '#fff', width: '40px', height: '40px' }}
+              />
+            ) : (
+              <FiMenu
+                style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
+              />
+            )}
+          </Navbarbutton>
+        </NavbarHumberger>
       </NavbarLinkContainer>
     </NavbarContainer>
   );
@@ -95,3 +127,9 @@ export const NavbarLink = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
+
+const NavbarHumberger = styled.div`
+  float: rigth;
+`;
+
+const Navbarbutton = styled.div``;
