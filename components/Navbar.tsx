@@ -13,6 +13,10 @@ export const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
 
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  }
+
   return (
     <NavbarContainer>
       {navbarOpen && (
@@ -45,6 +49,7 @@ export const Navbar = () => {
         <NavbarLink>Information</NavbarLink>
 
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
+        {isMobile &&(
         <NavbarHumberger>
           <Navbarbutton onClick={handleToggle}>
             {navbarOpen ? (
@@ -58,6 +63,7 @@ export const Navbar = () => {
             )}
           </Navbarbutton>
         </NavbarHumberger>
+        )}
       </NavbarLinkContainer>
     </NavbarContainer>
   );
