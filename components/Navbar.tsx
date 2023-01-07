@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-  }
+  
 
   return (
     <NavbarContainer>
