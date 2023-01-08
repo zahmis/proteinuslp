@@ -1,26 +1,26 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
+# Next.js サイトをビルドして GitHub ページにデプロイするワークフローの例
 #
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
+# Next.jsを始めるには https://nextjs.org/docs/getting-started をご覧ください。
 #
 name: Deploy Next.js site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # デフォルトブランチをターゲットとしたプッシュを実行する
   push:
-    branches: ["master"]
+    branches: ['master']
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Actions タブからこのワークフローを手動で実行できるようにします。
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# GITHUB_TOKEN のパーミッションを設定し、GitHub Pages へのデプロイを許可します。
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
+# 1つの同時デプロイメントを許可する
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -50,24 +50,24 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: '16'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
+          # Next.jsの設定ファイルにbasePathを自動注入し、無効化する。
+          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized)を無効にする。
           #
-          # You may remove this line if you want to manage the configuration yourself.
+          # 設定を自分で管理したい場合は、この行を削除してもかまいません。
           static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v3
         with:
           path: |
             .next/cache
-          # Generate a new cache whenever packages or source files change.
+          # パッケージやソースファイルが変更されるたびに新しいキャッシュを生成します。
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-          # If source files changed but packages didn't, rebuild from a prior cache.
+          # ソースファイルは変更されたがパッケージは変更されなかった場合、以前のキャッシュからリビルドします。
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
