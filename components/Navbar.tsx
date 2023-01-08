@@ -44,33 +44,23 @@ export const Navbar = () => {
       </StyledLink>
       <NavbarLinkContainer>
         <StyledLink href={'/'}>
-          <NavbarLink
-            className={router.pathname === '/' ? 'current' : 'nonCurrent'}
-          >
-            Crafts
-          </NavbarLink>
+          <NavbarLink isCurrent={router.pathname === '/'}>Crafts</NavbarLink>
         </StyledLink>
 
         <StyledLink href={'/future'}>
-          <NavbarLink
-            className={router.pathname === '/future' ? 'current' : 'nonCurrent'}
-          >
+          <NavbarLink isCurrent={router.pathname === '/future'}>
             Future
           </NavbarLink>
         </StyledLink>
 
         <StyledLink href={'/media'}>
-          <NavbarLink
-            className={router.pathname === '/media' ? 'current' : 'nonCurrent'}
-          >
+          <NavbarLink isCurrent={router.pathname === '/media'}>
             Media
           </NavbarLink>
         </StyledLink>
 
         <StyledLink href={'/about'}>
-          <NavbarLink
-            className={router.pathname === '/about' ? 'current' : 'nonCurrent'}
-          >
+          <NavbarLink isCurrent={router.pathname === '/about'}>
             About Us
           </NavbarLink>
         </StyledLink>
@@ -112,8 +102,13 @@ const NavbarLinkContainer = styled.div`
   justify-content: flex-end;
 `;
 
+type NavbarLinkProps = {
+  isCurrent?: boolean;
+};
+
 export const NavbarLink = styled.div`
-  color: ${(props) => (props.className === 'current' ? '#0029cc' : '#0f0800')};
+  color: ${(props: NavbarLinkProps) =>
+    props.isCurrent ? '#0029cc' : '#0f0800'};
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
