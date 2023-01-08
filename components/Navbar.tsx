@@ -14,6 +14,8 @@ export const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
 
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
   const router = useRouter();
 
   return (
@@ -66,19 +68,21 @@ export const Navbar = () => {
         </StyledLink>
 
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
-        <NavbarHumberger>
-          <Navbarbutton onClick={handleToggle}>
-            {navbarOpen ? (
-              <MdClose
-                style={{ color: '#fff', width: '40px', height: '40px' }}
-              />
-            ) : (
-              <FiMenu
-                style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
-              />
-            )}
-          </Navbarbutton>
-        </NavbarHumberger>
+        {isMobile && (
+          <NavbarHumberger>
+            <Navbarbutton onClick={handleToggle}>
+              {navbarOpen ? (
+                <MdClose
+                  style={{ color: '#fff', width: '40px', height: '40px' }}
+                />
+              ) : (
+                <FiMenu
+                  style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
+                />
+              )}
+            </Navbarbutton>
+          </NavbarHumberger>
+        )}
       </NavbarLinkContainer>
     </NavbarContainer>
   );
@@ -112,6 +116,9 @@ export const NavbarLink = styled.div`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+  @media (max-width: 380px) {
+    display: none;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -119,7 +126,14 @@ const StyledLink = styled(Link)`
 `;
 
 const NavbarHumberger = styled.div`
-  float: rigth;
+  @media (min-width: 381px) {
+    display: none;
+    float: rigth;
+  }
+  @media (min-width: 381px) {
+    display: none;
+    float: rigth;
+  }
 `;
 
 const Navbarbutton = styled.div``;
