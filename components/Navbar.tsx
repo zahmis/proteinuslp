@@ -88,14 +88,24 @@ const NavbarLinkContainer = styled.div`
 `;
 
 export const NavbarLink = styled.div`
-  color: #0f0800;
+  color: ${(props) => (props.className === 'current' ? '#0029cc' : '#0f0800')};
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+  @media (max-width: 380px) {
+    display: none;
+  }
 `;
 
 const NavbarHumberger = styled.div`
+@media (min-width: 381px) {
+  display: none;
   float: rigth;
+}
+@media (min-width: 381px) {
+  display: none;
+  float: rigth;
+}
 `;
 
 const Navbarbutton = styled.div``;
