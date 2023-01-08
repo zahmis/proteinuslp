@@ -30,7 +30,7 @@ export const Navbar = () => {
         <NavbarLogo>
           <Image
             src=''
-            alt='proteinus-logo'
+            alt='proteinusLogo'
             width={60}
             height={60}
             style={{
@@ -45,7 +45,7 @@ export const Navbar = () => {
       <NavbarLinkContainer>
         <StyledLink href={'/'}>
           <NavbarLink
-            className={router.pathname === '/' ? 'current' : 'non-current'}
+            className={router.pathname === '/' ? 'current' : 'nonCurrent'}
           >
             Crafts
           </NavbarLink>
@@ -53,9 +53,7 @@ export const Navbar = () => {
 
         <StyledLink href={'/future'}>
           <NavbarLink
-            className={
-              router.pathname === '/future' ? 'current' : 'non-current'
-            }
+            className={router.pathname === '/future' ? 'current' : 'nonCurrent'}
           >
             Future
           </NavbarLink>
@@ -63,7 +61,7 @@ export const Navbar = () => {
 
         <StyledLink href={'/media'}>
           <NavbarLink
-            className={router.pathname === '/media' ? 'current' : 'non-current'}
+            className={router.pathname === '/media' ? 'current' : 'nonCurrent'}
           >
             Media
           </NavbarLink>
@@ -71,7 +69,7 @@ export const Navbar = () => {
 
         <StyledLink href={'/about'}>
           <NavbarLink
-            className={router.pathname === '/about' ? 'current' : 'non-current'}
+            className={router.pathname === '/about' ? 'current' : 'nonCurrent'}
           >
             About Us
           </NavbarLink>
@@ -115,13 +113,10 @@ const NavbarLinkContainer = styled.div`
 `;
 
 export const NavbarLink = styled.div`
-  color: #0f0800;
+  color: ${(props) => (props.className === 'current' ? '#0029cc' : '#0f0800')};
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
-  &.current {
-    color: #0029cc;
-  }
 `;
 
 const StyledLink = styled(Link)`
