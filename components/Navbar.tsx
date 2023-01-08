@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
-
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -13,36 +14,56 @@ export const Navbar = () => {
     setNavbarOpen(!navbarOpen);
   };
 
+  const router = useRouter();
+
   return (
     <NavbarContainer>
       {navbarOpen && (
         <NavbarLinkContainer>
-          <NavbarLink>Home</NavbarLink>
           <NavbarLink>Crafts</NavbarLink>
           <NavbarLink>Future</NavbarLink>
-          <NavbarLink>About us</NavbarLink>
           <NavbarLink>Media</NavbarLink>
+          <NavbarLink>About us</NavbarLink>
         </NavbarLinkContainer>
       )}
-      <NavbarLogo>
-        <Image
-          src=''
-          alt='proteinus-logo'
-          width={60}
-          height={60}
-          style={{
-            backgroundColor: '#797979',
-            flexGrow: '1',
-          }}
-        />
-        <NavbarLink>Proteinus</NavbarLink>
-      </NavbarLogo>
+      <StyledLink href={'/'}>
+        <NavbarLogo>
+          <Image
+            src=''
+            alt='proteinusLogo'
+            width={60}
+            height={60}
+            style={{
+              backgroundColor: '#797979',
+              flexGrow: '1',
+            }}
+          />
+
+          <NavbarLink> Proteinus</NavbarLink>
+        </NavbarLogo>
+      </StyledLink>
       <NavbarLinkContainer>
-        <NavbarLink>Crafts</NavbarLink>
-        <NavbarLink>Future</NavbarLink>
-        <NavbarLink>About Us</NavbarLink>
-        <NavbarLink>Media</NavbarLink>
-        <NavbarLink>Information</NavbarLink>
+        <StyledLink href={'/'}>
+          <NavbarLink isCurrent={router.pathname === '/'}>Crafts</NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/future'}>
+          <NavbarLink isCurrent={router.pathname === '/future'}>
+            Future
+          </NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/media'}>
+          <NavbarLink isCurrent={router.pathname === '/media'}>
+            Media
+          </NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/about'}>
+          <NavbarLink isCurrent={router.pathname === '/about'}>
+            About Us
+          </NavbarLink>
+        </StyledLink>
 
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
         <NavbarHumberger>
@@ -81,11 +102,20 @@ const NavbarLinkContainer = styled.div`
   justify-content: flex-end;
 `;
 
+type NavbarLinkProps = {
+  isCurrent?: boolean;
+};
+
 export const NavbarLink = styled.div`
-  color: #0f0800;
+  color: ${(props: NavbarLinkProps) =>
+    props.isCurrent ? '#0029cc' : '#0f0800'};
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const NavbarHumberger = styled.div`
