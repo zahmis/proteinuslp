@@ -3,61 +3,84 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
-
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  const handleToggle = () => {
-    setNavbarOpen(!navbarOpen);
-  };
+  const handleToggle = () => setNavbarOpen(!navbarOpen);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  const router = useRouter();
 
   return (
     <NavbarContainer>
       {navbarOpen && (
         <NavbarLinkContainer>
-          <NavbarLink>Home</NavbarLink>
           <NavbarLink>Crafts</NavbarLink>
           <NavbarLink>Future</NavbarLink>
-          <NavbarLink>About us</NavbarLink>
           <NavbarLink>Media</NavbarLink>
+          <NavbarLink>About us</NavbarLink>
         </NavbarLinkContainer>
       )}
-      <NavbarLogo>
-        <Image
-          src=''
-          alt='proteinus-logo'
-          width={60}
-          height={60}
-          style={{
-            backgroundColor: '#797979',
-            flexGrow: '1',
-          }}
-        />
-        <NavbarLink>Proteinus</NavbarLink>
-      </NavbarLogo>
+      <StyledLink href={'/'}>
+        <NavbarLogo>
+          <Image
+            src=''
+            alt='proteinusLogo'
+            width={60}
+            height={60}
+            style={{
+              backgroundColor: '#797979',
+              flexGrow: '1',
+            }}
+          />
+
+          <NavbarLink> Proteinus</NavbarLink>
+        </NavbarLogo>
+      </StyledLink>
       <NavbarLinkContainer>
-        <NavbarLink>Crafts</NavbarLink>
-        <NavbarLink>Future</NavbarLink>
-        <NavbarLink>About Us</NavbarLink>
-        <NavbarLink>Media</NavbarLink>
-        <NavbarLink>Information</NavbarLink>
+        <StyledLink href={'/'}>
+          <NavbarLink isCurrent={router.pathname === '/'}>Crafts</NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/future'}>
+          <NavbarLink isCurrent={router.pathname === '/future'}>
+            Future
+          </NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/media'}>
+          <NavbarLink isCurrent={router.pathname === '/media'}>
+            Media
+          </NavbarLink>
+        </StyledLink>
+
+        <StyledLink href={'/about'}>
+          <NavbarLink isCurrent={router.pathname === '/about'}>
+            About Us
+          </NavbarLink>
+        </StyledLink>
 
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
-        <NavbarHumberger>
-          <Navbarbutton onClick={handleToggle}>
-            {navbarOpen ? (
-              <MdClose
-                style={{ color: '#fff', width: '40px', height: '40px' }}
-              />
-            ) : (
-              <FiMenu
-                style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
-              />
-            )}
-          </Navbarbutton>
-        </NavbarHumberger>
+        {isMobile && (
+          <NavbarHumberger>
+            <Navbarbutton onClick={handleToggle}>
+              {navbarOpen ? (
+                <MdClose
+                  style={{ color: '#fff', width: '40px', height: '40px' }}
+                />
+              ) : (
+                <FiMenu
+                  style={{ color: '#7b7b7b', width: '40px', height: '40px' }}
+                />
+              )}
+            </Navbarbutton>
+          </NavbarHumberger>
+        )}
       </NavbarLinkContainer>
     </NavbarContainer>
   );
@@ -81,15 +104,34 @@ const NavbarLinkContainer = styled.div`
   justify-content: flex-end;
 `;
 
-export const NavbarLink = styled.div`
-  color: #0f0800;
+type NavbarLinkProps = {
+  isCurrent?: boolean;
+};
+
+const NavbarLink = styled.div`
+  color: ${(props: NavbarLinkProps) =>
+    props.isCurrent ? '#0029cc' : '#0f0800'};
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+  @media (max-width: 380px) {
+    display: none;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
 `;
 
 const NavbarHumberger = styled.div`
-  float: rigth;
+  @media (min-width: 381px) {
+    display: none;
+    float: rigth;
+  }
+  @media (min-width: 381px) {
+    display: none;
+    float: rigth;
+  }
 `;
 
 const Navbarbutton = styled.div``;
