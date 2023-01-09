@@ -10,9 +10,7 @@ import Link from 'next/link';
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
-  const handleToggle = () => {
-    setNavbarOpen(!navbarOpen);
-  };
+  const handleToggle = () => setNavbarOpen(!navbarOpen);
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
@@ -110,7 +108,7 @@ type NavbarLinkProps = {
   isCurrent?: boolean;
 };
 
-export const NavbarLink = styled.div`
+const NavbarLink = styled.div`
   color: ${(props: NavbarLinkProps) =>
     props.isCurrent ? '#0029cc' : '#0f0800'};
   font-size: x-large;
