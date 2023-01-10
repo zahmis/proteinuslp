@@ -30,7 +30,7 @@ export const Navbar = () => {
       <StyledLink href={'/'}>
         <NavbarLogo>
           <LogoWrapper>
-            <ProteinusLogo width={60} height={60} viewBox='15 -10 120 120' />
+            <ProteinusLogo viewBox='15 -10 120 120' />
           </LogoWrapper>
           <NavbarLink> Proteinus</NavbarLink>
         </NavbarLogo>
