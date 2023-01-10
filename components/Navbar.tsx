@@ -9,9 +9,8 @@ import ProteinusLogo from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
   const router = useRouter();
-  const [navbarOpen, setNavbarOpen] = useState(false);
-
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleToggle = () => setNavbarOpen(!navbarOpen);
 
