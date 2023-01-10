@@ -81,7 +81,6 @@ export const Navbar = () => {
 
 const NavbarContainer = styled.nav`
   width: 100%;
-
   display: flex;
   justify-content: space-between;
 `;
