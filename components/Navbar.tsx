@@ -3,19 +3,17 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ProteinusLogo from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
+  const router = useRouter();
   const [navbarOpen, setNavbarOpen] = useState(false);
-
-  const handleToggle = () => setNavbarOpen(!navbarOpen);
 
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-  const router = useRouter();
+  const handleToggle = () => setNavbarOpen(!navbarOpen);
 
   return (
     <NavbarContainer>
@@ -131,8 +129,6 @@ const NavbarHumberger = styled.div`
   }
   @media (min-width: 381px) {
     display: none;
-    float: rigth;
+    float: right;
   }
 `;
-
-const Navbarbutton = styled.div``;
