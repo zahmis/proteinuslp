@@ -29,15 +29,9 @@ export const Navbar = () => {
       )}
       <StyledLink href={'/'}>
         <NavbarLogo>
-          <ProteinusLogo
-            width={60}
-            height={60}
-            viewBox={'15 -10 120 120'}
-            style={{
-              borderRadius: '50%',
-            }}
-          />
-
+          <LogoWrapper>
+            <ProteinusLogo width={60} height={60} viewBox='15 -10 120 120' />
+          </LogoWrapper>
           <NavbarLink> Proteinus</NavbarLink>
         </NavbarLogo>
       </StyledLink>
@@ -95,6 +89,14 @@ const NavbarContainer = styled.nav`
 const NavbarLogo = styled.div`
   display: flex;
   justify-content: flex-start;
+`;
+
+const LogoWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  svg {
+    border-radius: 50%;
+  }
 `;
 
 const NavbarLinkContainer = styled.div`
