@@ -1,0 +1,38 @@
+// フォーマットの詳細については、https://aka.ms/devcontainer.json を参照してください。設定オプションについては
+// https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose にある README を参照してください。
+{
+  "name": "proteinuslp",
+
+  // さらにコンポーズファイルがある場合や、異なる名前を使用する場合は 'dockerComposeFile' リストを更新してください。
+  // .devcontainer/docker-compose.yml ファイルには、必要な/作りたいオーバーライドが含まれています。
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+
+  // 'service' プロパティは、VS Code が使用するコンテナ用のサービス名です。
+  // 使用するコンテナのサービス名です。この値と .devcontainer/docker-compose.yml を実際のサービス名に更新してください。
+  "service": "web",
+
+  // オプションの 'workspaceFolder' プロパティは、VS Code が接続時にデフォルトで開くべきパスです。
+  // 接続されたときにVS Codeがデフォルトで開くパスです。これは通常、.devcontainer/docker-compose.ymlにあるファイルのマウントです。
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+
+  // 開発用コンテナに追加する機能。詳しくは、https://containers.dev/features。
+  // "features": {},
+
+  // 'forwardPorts' を使用して、コンテナ内のポート一覧をローカルで利用できるようにする。
+  // "forwardPorts": [],
+
+  // Docker Composeの設定で特定のサービスを起動したい場合は、次の行をアンコメントします。
+  // "runServices": [],
+
+  // VS Codeがシャットダウンした後もコンテナを稼働させたい場合は、次の行をアンコメントします。
+  // "shutdownAction": "none",
+
+  // コンテナ作成後にコマンドを実行する場合は、次の行のコメントを外す。
+  // "postCreateCommand": "cat /etc/os-release",
+
+  // ツール固有のプロパティを設定する。
+  // "customizations": {},
+
+  // コンテナのデフォルト以外の既存のユーザーで接続する場合はコメントを外す。詳細： https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "devcontainer"
+}

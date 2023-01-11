@@ -1,0 +1,25 @@
+# WIP
+version: '3.7'
+services:
+  web:
+    # サービスの Dockerfile を .devcontainer にあるものに上書きしたい場合は、コメントを外します。
+    # フォルダにあるものに上書きしたい場合は、コメントを外してください。Dockerfile とコンテキストのパスは *primary* ファイルからの相対パスであることに注意してください。
+    # docker-compose.yml ファイル (devcontainer.json の "dockerComposeFile" 配列の1番目) からの相対パスであることに注意してください。
+    # 配列の最初のファイル)。以下のサンプルでは、プライマリファイルがプロジェクトのルートにあることを想定しています。
+    #
+    build:
+      context: .
+      dockerfile: .devcontainer/dockerfile
+
+    volumes:
+      # VS Codeにプロジェクトのフォルダをマウントさせたい場所に更新してください。
+      - ../..:/workspaces:cached
+
+    # C++、Go、Rustのようなptraceベースのデバッガを使用する場合は、次の4行をアンコメントしてください。
+    # cap_add:
+    #   - SYS_PTRACE
+    # security_opt:
+    #   - seccomp:unconfined
+
+    # プロセス終了後にシャットダウンしないよう、デフォルトのコマンドを上書きします。
+    command: /bin/sh -c "while sleep 1000; do :; done"
