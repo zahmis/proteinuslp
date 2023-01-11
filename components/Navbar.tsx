@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ProteinusLogo from '../public/icons/proteinusNew.svg';
+import ProteinusNew from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -30,7 +29,7 @@ export const Navbar = () => {
       <StyledLink href={'/'}>
         <NavbarLogo>
           <LogoWrapper>
-            <ProteinusLogo width={60} height={60} viewBox='15 -10 120 120' />
+            <ProteinusNew viewBox='15 -10 120 120' />
           </LogoWrapper>
           <NavbarLink> Proteinus</NavbarLink>
         </NavbarLogo>
