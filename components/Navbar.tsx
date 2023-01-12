@@ -20,10 +20,21 @@ export const Navbar = () => {
     <NavbarContainer>
       {navbarOpen && (
         <NavbarLinkContainer>
-          <NavbarLink>Crafts</NavbarLink>
+          <StyledLink href={'Craft'}>
+            <NavbarLink>Crafts</NavbarLink>
+          </StyledLink>
+
+          <StyledLink href={'Future'}>
           <NavbarLink>Future</NavbarLink>
+          </StyledLink>
+
+          <StyledLink href={'Media'}>
           <NavbarLink>Media</NavbarLink>
+          </StyledLink>
+          
+          <StyledLink href={'About us'}>
           <NavbarLink>About us</NavbarLink>
+          </StyledLink>
         </NavbarLinkContainer>
       )}
       <StyledLink href={'/'}>
@@ -69,7 +80,7 @@ export const Navbar = () => {
         {isMobile && (
           <NavbarHumberger>
             <Navbarbutton onClick={handleToggle}>
-              {navbarOpen ? (
+              {navbarOpen? (
                 <MdClose
                   style={{ color: '#fff', width: '40px', height: '40px' }}
                 />
@@ -102,6 +113,9 @@ const NavbarLinkContainer = styled.div`
   display: flex;
   margin-right: 120px;
   justify-content: flex-end;
+  width: 40px;
+  height: 40px; 
+
 `;
 
 type NavbarLinkProps = {
