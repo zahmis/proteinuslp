@@ -1,8 +1,6 @@
 # wip
 FROM node:16.13.0
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /workspaces/proteinuslp
 COPY . .
 RUN yarn install
-CMD [ "yarn", "dev" ]
-EXPOSE 3000
+RUN chown node:node -R /workspaces/proteinuslp /usr/local/share/.cache/yarn
