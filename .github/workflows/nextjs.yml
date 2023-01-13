@@ -80,8 +80,8 @@ jobs:
       - name: Next.jsでビルドする
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Next.jsで静的HTMLを書き出す
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      # - name: Next.jsで静的HTMLを書き出す
+      #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
