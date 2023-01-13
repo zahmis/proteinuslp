@@ -1,6 +1,15 @@
-# wip
-FROM node:16.13.0
+# [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 18, 16, 14, 18-bullseye, 16-bullseye, 14-bullseye, 18-buster, 16-buster, 14-buster
+ARG VARIANT=18-bullseye
+FROM node:${VARIANT}
+
+ENV IMAGE_VARIANT="18-bullseye"
+
+ARG USERNAME=node
+
 WORKDIR /workspaces/proteinuslp
+
 COPY . .
+
 RUN yarn install
+
 RUN chown node:node -R /workspaces/proteinuslp /usr/local/share/.cache/yarn
