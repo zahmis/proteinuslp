@@ -8,13 +8,11 @@ import Link from 'next/link';
 import ProteinusNew from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
+  const router = useRouter();
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleToggle = () => setNavbarOpen(!navbarOpen);
-
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-
-  const router = useRouter();
 
   return (
     <NavbarContainer>
@@ -80,7 +78,6 @@ export const Navbar = () => {
 
 const NavbarContainer = styled.nav`
   width: 100%;
-
   display: flex;
   justify-content: space-between;
 `;
@@ -131,7 +128,7 @@ const NavbarHumberger = styled.div`
   }
   @media (min-width: 381px) {
     display: none;
-    float: rigth;
+    float: right;
   }
 `;
 
