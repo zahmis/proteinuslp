@@ -2,7 +2,7 @@
 #
 # Next.jsを始めるには https://nextjs.org/docs/getting-started をご覧ください。
 #
-name: Deploy Next.js site to Pages
+name: Next.jsのサイトをPagesにデプロイする
 
 on:
   # デフォルトブランチをターゲットとしたプッシュを実行する
@@ -83,10 +83,10 @@ jobs:
       # - name: Next.jsで静的HTMLを書き出す
       #   run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./out
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: ./out
 
   # Deployment job
   deploy:
