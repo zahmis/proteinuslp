@@ -5,7 +5,7 @@ import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ProteinusLogo from '../public/icons/proteinusNew.svg';
+import ProteinusNew from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
   const router = useRouter();
@@ -27,7 +27,7 @@ export const Navbar = () => {
       <StyledLink href={'/'}>
         <NavbarLogo>
           <LogoWrapper>
-            <ProteinusLogo viewBox='15 -10 120 120' />
+            <ProteinusNew viewBox='15 -10 120 120' />
           </LogoWrapper>
           <NavbarLink> Proteinus</NavbarLink>
         </NavbarLogo>
