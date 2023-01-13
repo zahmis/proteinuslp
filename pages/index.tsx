@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Navbar } from '../components/Navbar';
 import Image from 'next/image';
+import { FaHeart } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -79,6 +80,9 @@ export default function Home() {
           }}
         />
       </ImageGrid>
+      <HeartWrapper>
+        <FaHeart color='#ff0000' size={30} />
+      </HeartWrapper>
     </Main>
   );
 }
@@ -96,4 +100,10 @@ const ImageGrid = styled.div`
 `;
 
 const Main = styled.main``;
+
+const HeartWrapper = styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+`;
 const Title = styled.div``;
