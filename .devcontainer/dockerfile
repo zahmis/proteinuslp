@@ -4,12 +4,11 @@ FROM node:${VARIANT}
 
 ENV IMAGE_VARIANT="18-bullseye"
 
-ARG USERNAME=node
-
 WORKDIR /workspaces/proteinuslp
+RUN useradd --create-home --shell /bin/bash vscode
+
+RUN chown vscode:vscode -R /workspaces /usr/local
 
 COPY . .
 
 RUN yarn install
-
-RUN chown node:node -R /workspaces/proteinuslp /usr/local/share/.cache/yarn
