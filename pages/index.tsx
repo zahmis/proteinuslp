@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { FaHeart } from 'react-icons/fa';
 import { RiFacebookCircleFill } from 'react-icons/ri';
 import { RiTwitterFill } from 'react-icons/ri';
-import { RiInstagramFill } from 'react-icons/ri';
-import { TfiYoutube } from 'react-icons/tfi';
+import Instagram_Glyph_Gradient_RGB from '../public/icons/Instagram_Glyph_Gradient_RGB.svg';
+import { RiYoutubeFill } from 'react-icons/ri';
 import 'typeface-itim';
 
 export default function Home() {
@@ -90,10 +90,10 @@ export default function Home() {
       </HeartWrapper>
       <Footer>
         <SnsWrapper>
-          <RiFacebookCircleFill size={35} />
-          <RiTwitterFill size={35} />
-          <RiInstagramFill size={35} />
-          <TfiYoutube size={35} />
+          <RiFacebookCircleFill color='#3b5998' size={35} />
+          <RiTwitterFill color='#00acee' size={35} />
+          <Instagram_Glyph_Gradient_RGB />
+          <RiYoutubeFill color='#FF0000' size={35} />
         </SnsWrapper>
         <Copyright>2022&copy;Proteinus</Copyright>
       </Footer>
@@ -127,6 +127,11 @@ const Footer = styled.footer`
 const SnsWrapper = styled.div`
   * {
     margin: 0 20px;
+  }
+
+  svg {
+    width: 35px;
+    height: 35px;
   }
 `;
 
