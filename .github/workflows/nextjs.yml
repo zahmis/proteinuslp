@@ -7,7 +7,7 @@ name: Next.jsのサイトをPagesにデプロイする
 on:
   # デフォルトブランチをターゲットとしたプッシュを実行する
   push:
-    branches: ['master']
+    branches: ['*']
 
   # Actions タブからこのワークフローを手動で実行できるようにします。
   workflow_dispatch:
