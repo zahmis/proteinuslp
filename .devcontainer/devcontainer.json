@@ -19,5 +19,5 @@
     "terminal.integrated.shell.linux": "/bin/bash"
   },
 
-  "remoteUser": "node"
+  "remoteUser": "vscode"
 }
