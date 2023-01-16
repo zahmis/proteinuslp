@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Navbar } from '../components/Navbar';
 import Image from 'next/image';
@@ -7,8 +8,27 @@ import { RiTwitterFill } from 'react-icons/ri';
 import Instagram_Glyph_Gradient_RGB from '../public/icons/Instagram_Glyph_Gradient_RGB.svg';
 import { RiYoutubeFill } from 'react-icons/ri';
 import 'typeface-itim';
+import axios from 'axios';
 
 export default function Home() {
+  const [users, setUsers] = useState([]);
+
+  const getUsers = async () => {
+    await axios
+      .get('http://localhost:3000/users')
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.log('miss');
+      });
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  console.log(users);
   return (
     <Main>
       <Navbar />
