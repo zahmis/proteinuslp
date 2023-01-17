@@ -1,8 +1,34 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Navbar } from '../components/Navbar';
 import Image from 'next/image';
+import { FaHeart } from 'react-icons/fa';
+import { RiFacebookCircleFill } from 'react-icons/ri';
+import { RiTwitterFill } from 'react-icons/ri';
+import Instagram_Glyph_Gradient_RGB from '../public/icons/Instagram_Glyph_Gradient_RGB.svg';
+import { RiYoutubeFill } from 'react-icons/ri';
+import 'typeface-itim';
+import axios from 'axios';
 
 export default function Home() {
+  const [users, setUsers] = useState([]);
+
+  const getUsers = async () => {
+    await axios
+      .get('http://localhost:3000/users')
+      .then((res) => {
+        setUsers(res.data);
+      })
+      .catch((err) => {
+        console.log('miss');
+      });
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  console.log(users);
   return (
     <Main>
       <Navbar />
@@ -79,6 +105,21 @@ export default function Home() {
           }}
         />
       </ImageGrid>
+<<<<<<< HEAD
+=======
+      <HeartWrapper>
+        <FaHeart color='#ff0000' size={30} />
+      </HeartWrapper>
+      <Footer>
+        <SnsWrapper>
+          <RiFacebookCircleFill color='#3b5998' size={35} />
+          <RiTwitterFill color='#00acee' size={35} />
+          <Instagram_Glyph_Gradient_RGB />
+          <RiYoutubeFill color='#FF0000' size={35} />
+        </SnsWrapper>
+        <Copyright>2022&copy;Proteinus</Copyright>
+      </Footer>
+>>>>>>> origin/master
     </Main>
   );
 }
@@ -96,4 +137,31 @@ const ImageGrid = styled.div`
 `;
 
 const Main = styled.main``;
+
+const HeartWrapper = styled.div`
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+`;
+
+const Footer = styled.footer`
+  text-align: center;
+`;
+const SnsWrapper = styled.div`
+  * {
+    margin: 0 20px;
+  }
+
+  svg {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+const Copyright = styled.p`
+  margin: 20px;
+  font-size: 24px;
+  font-family: 'Itim', sans-serif;
+`;
+
 const Title = styled.div``;

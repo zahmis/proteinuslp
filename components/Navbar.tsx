@@ -3,53 +3,32 @@ import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
 import { useMediaQuery } from 'react-responsive';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import ProteinusNew from '../public/icons/proteinusNew.svg';
 
 export const Navbar = () => {
+  const router = useRouter();
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleToggle = () => setNavbarOpen(!navbarOpen);
-
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-
-  const router = useRouter();
 
   return (
     <NavbarContainer>
       {navbarOpen && (
         <NavbarLinkContainer>
-          <StyledLink href={'Craft'}>
-            <NavbarLink>Crafts</NavbarLink>
-          </StyledLink>
-
-          <StyledLink href={'Future'}>
+          <NavbarLink>Crafts</NavbarLink>
           <NavbarLink>Future</NavbarLink>
-          </StyledLink>
-
-          <StyledLink href={'Media'}>
           <NavbarLink>Media</NavbarLink>
-          </StyledLink>
-          
-          <StyledLink href={'About us'}>
           <NavbarLink>About us</NavbarLink>
-          </StyledLink>
         </NavbarLinkContainer>
       )}
       <StyledLink href={'/'}>
         <NavbarLogo>
-          <Image
-            src=''
-            alt='proteinusLogo'
-            width={60}
-            height={60}
-            style={{
-              backgroundColor: '#797979',
-              flexGrow: '1',
-            }}
-          />
-
+          <LogoWrapper>
+            <ProteinusNew viewBox='15 -10 120 120' />
+          </LogoWrapper>
           <NavbarLink> Proteinus</NavbarLink>
         </NavbarLogo>
       </StyledLink>
@@ -80,7 +59,7 @@ export const Navbar = () => {
         {isMobile && (
           <NavbarHumberger>
             <Navbarbutton onClick={handleToggle}>
-              {navbarOpen? (
+              {navbarOpen ? (
                 <MdClose
                   style={{ color: '#fff', width: '40px', height: '40px' }}
                 />
@@ -99,7 +78,6 @@ export const Navbar = () => {
 
 const NavbarContainer = styled.nav`
   width: 100%;
-  opacity: 56%;
   display: flex;
   justify-content: space-between;
 `;
@@ -107,6 +85,14 @@ const NavbarContainer = styled.nav`
 const NavbarLogo = styled.div`
   display: flex;
   justify-content: flex-start;
+`;
+
+const LogoWrapper = styled.div`
+  width: 60px;
+  height: 60px;
+  svg {
+    border-radius: 50%;
+  }
 `;
 
 const NavbarLinkContainer = styled.div`
@@ -128,6 +114,10 @@ const NavbarLink = styled.div`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+<<<<<<< HEAD
+=======
+  opacity: 56%;
+>>>>>>> origin/master
   @media (max-width: 380px) {
     display: none;
   }
@@ -144,7 +134,11 @@ const NavbarHumberger = styled.div`
   }
   @media (min-width: 381px) {
     display: none;
+<<<<<<< HEAD
     float: rigth;
+=======
+    float: right;
+>>>>>>> origin/master
   }
 `;
 
