@@ -53,6 +53,17 @@ jobs:
         with:
           node-version: '16'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+<<<<<<< HEAD
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        with:
+          # Next.jsの設定ファイルにbasePathを自動注入し、無効化する。
+          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized)を無効にする。
+          #
+          # 設定を自分で管理したい場合は、この行を削除してもかまいません。
+          static_site_generator: next
+      - name: Restore cache
+=======
 
       # - name: Pages セットアップ
       #   uses: actions/configure-pages@v2
@@ -64,6 +75,7 @@ jobs:
       # static_site_generator: next
 
       - name: キャッシュ 復元
+>>>>>>> origin/master
         uses: actions/cache@v3
         with:
           path: |

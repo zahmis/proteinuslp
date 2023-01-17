@@ -99,6 +99,9 @@ const NavbarLinkContainer = styled.div`
   display: flex;
   margin-right: 120px;
   justify-content: flex-end;
+  width: 40px;
+  height: 40px; 
+
 `;
 
 type NavbarLinkProps = {
@@ -111,7 +114,10 @@ const NavbarLink = styled.div`
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
   margin: 15px;
+<<<<<<< HEAD
+=======
   opacity: 56%;
+>>>>>>> origin/master
   @media (max-width: 380px) {
     display: none;
   }
@@ -128,7 +134,11 @@ const NavbarHumberger = styled.div`
   }
   @media (min-width: 381px) {
     display: none;
+<<<<<<< HEAD
+    float: rigth;
+=======
     float: right;
+>>>>>>> origin/master
   }
 `;
 

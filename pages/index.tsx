@@ -105,6 +105,8 @@ export default function Home() {
           }}
         />
       </ImageGrid>
+<<<<<<< HEAD
+=======
       <HeartWrapper>
         <FaHeart color='#ff0000' size={30} />
       </HeartWrapper>
@@ -117,6 +119,7 @@ export default function Home() {
         </SnsWrapper>
         <Copyright>2022&copy;Proteinus</Copyright>
       </Footer>
+>>>>>>> origin/master
     </Main>
   );
 }
