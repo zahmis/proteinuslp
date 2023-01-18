@@ -15,7 +15,7 @@ export default function Home() {
 
   const getUsers = async () => {
     await axios
-      .get('http://localhost:3000/users')
+      .get('httplocalhost:3000/users')
       .then((res) => {
         setUsers(res.data);
       })
@@ -30,10 +30,10 @@ export default function Home() {
 
   console.log(users);
 
-  const [active, isActive] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleHeartClick = () => {
-    isActive(!active);
+    setIsActive(!isActive);
   };
 
   return (
@@ -115,7 +115,7 @@ export default function Home() {
       <HeartWrapper>
         <FaHeart
           onClick={handleHeartClick}
-          color={active ? '#ff0000' : '#808080'}
+          color={isActive ? '#ff0000' : '#808080'}
           size={30}
         />
       </HeartWrapper>
