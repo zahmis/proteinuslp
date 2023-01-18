@@ -30,10 +30,10 @@ export default function Home() {
 
   console.log(users);
 
-  const [active, setActive] = useState(false);
+  const [active, isActive] = useState(false);
 
   const handleHeartClick = () => {
-    setActive(!active);
+    isActive(!active);
   };
 
   return (
