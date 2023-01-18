@@ -29,6 +29,13 @@ export default function Home() {
   }, []);
 
   console.log(users);
+
+  const [active, setActive] = useState(false);
+
+  const handleHeartClick = () => {
+    setActive(!active);
+  };
+
   return (
     <Main>
       <Navbar />
@@ -106,7 +113,11 @@ export default function Home() {
         />
       </ImageGrid>
       <HeartWrapper>
-        <FaHeart color='#ff0000' size={30} />
+        <FaHeart
+          onClick={handleHeartClick}
+          color={active ? '#ff0000' : '#808080'}
+          size={30}
+        />
       </HeartWrapper>
       <Footer>
         <SnsWrapper>
