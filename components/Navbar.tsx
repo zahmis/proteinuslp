@@ -55,6 +55,12 @@ export const Navbar = () => {
           </NavbarLink>
         </StyledLink>
 
+        <StyledLink href={'/admins_list'}>
+          <NavbarLink isCurrent={router.pathname === '/admins_list'}>
+            Log in
+          </NavbarLink>
+        </StyledLink>
+
         {/* TODO: responsible 対応でスマホの時のみ表示するように改修する */}
         {isMobile && (
           <NavbarHumberger>
