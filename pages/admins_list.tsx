@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BASE_URL from './routers/url';
+import { ADMIN_URL } from './routers/url';
 import { AdminProps } from './api/types';
 
 export default function AdminsList() {
@@ -16,12 +16,12 @@ export default function AdminsList() {
   const [email, setEmail] = useState('');
 
   const fetch = async () => {
-    const res = await axios.get<AdminProps[]>(`${BASE_URL}/admin`);
+    const res = await axios.get<AdminProps[]>(`${ADMIN_URL}`);
     setAdmins(res.data);
   };
 
   const createAdmin = async () => {
-    await axios.post(`${BASE_URL}/admin`, {
+    await axios.post(`${ADMIN_URL}`, {
       name: name,
       email: email,
     });
@@ -31,12 +31,12 @@ export default function AdminsList() {
   };
 
   const showAdmin = async (id: number) => {
-    await axios.get(`${BASE_URL}/admin/${id}`);
+    await axios.get(`${ADMIN_URL}/${id}`);
     fetch();
   };
 
   const destroyaAdmin = async (id: number) => {
-    await axios.delete(`${BASE_URL}/admin/${id}`);
+    await axios.delete(`${ADMIN_URL}/${id}`);
     fetch();
   };
 

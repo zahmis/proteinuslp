@@ -5,7 +5,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BASE_URL from './url';
+import { ADMIN_URL } from './url';
 import { AdminProps } from '../api/types';
 
 const RoutersPage: NextPage = () => {
@@ -16,7 +16,7 @@ const RoutersPage: NextPage = () => {
   useEffect(() => {
     const adminData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/admin/${id}`);
+        const res = await axios.get(`${ADMIN_URL}/${id}`);
         setAdmin(res.data);
       } catch (error) {
         console.error(error);
