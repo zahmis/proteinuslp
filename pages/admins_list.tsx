@@ -3,31 +3,25 @@ import React, { useState, useEffect } from 'react';
 import { Admin } from '../components/Admin';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-interface Admin {
-  id: number;
-  name: string;
-  email: string;
-}
+import { ADMIN_URL } from './routers/url';
+import { AdminProps } from './api/types';
 
 export default function AdminsList() {
-  const [admins, setAdmins] = useState<Admin[]>([]);
+  const [admins, setAdmins] = useState<AdminProps[]>([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
 
   const fetch = async () => {
-    const res = await axios.get<Admin[]>('http://0.0.0.0:3000/admins');
+    const res = await axios.get<AdminProps[]>(`${ADMIN_URL}`);
     setAdmins(res.data);
   };
 
   const createAdmin = async () => {
-    await axios.post('http://0.0.0.0:3000/admins', {
+    await axios.post(`${ADMIN_URL}`, {
       name: name,
       email: email,
     });
@@ -37,12 +31,12 @@ export default function AdminsList() {
   };
 
   const showAdmin = async (id: number) => {
-    await axios.get(`http://0.0.0.0:3000/admins/${id}`);
+    await axios.get(`${ADMIN_URL}/${id}`);
     fetch();
   };
 
   const destroyaAdmin = async (id: number) => {
-    await axios.delete(`http://0.0.0.0:3000/admins/${id}`);
+    await axios.delete(`${ADMIN_URL}/${id}`);
     fetch();
   };
 
@@ -94,14 +88,14 @@ export default function AdminsList() {
           </thead>
 
           <tbody>
-            {admins.map((admin, index) => {
+            {admins.map(({ id, name, email }, index) => {
               return (
                 <Admin
-                  id={admin.id}
+                  id={id}
                   key={index}
                   index={index}
-                  name={admin.name}
-                  email={admin.email}
+                  name={name}
+                  email={email}
                   destroyAdmin={destroyaAdmin}
                   showAdmin={showAdmin}
                 />

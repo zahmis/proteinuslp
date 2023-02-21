@@ -5,23 +5,18 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-interface Admin {
-  id: number;
-  name: string;
-  email: string;
-}
+import { ADMIN_URL } from './url';
+import { AdminProps } from '../api/types';
 
 const RoutersPage: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
-
-  const [admin, setAdmin] = useState<Admin>();
+  const [admin, setAdmin] = useState<AdminProps>();
 
   useEffect(() => {
     const adminData = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/admins/${id}`);
+        const res = await axios.get(`${ADMIN_URL}/${id}`);
         setAdmin(res.data);
       } catch (error) {
         console.error(error);
@@ -33,7 +28,7 @@ const RoutersPage: NextPage = () => {
   return (
     <Container>
       <h1 className='mt-5'>管理者ID {id}</h1>
-      {admin && (
+      {admin != null && (
         <>
           <p>名前: {admin.name}</p>
           <p>メールアドレス: {admin.email}</p>

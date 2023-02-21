@@ -1,35 +1,25 @@
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { AdminProps } from 'pages/api/types';
 
-interface AdminProps {
-  id: number;
-  index: number;
-  name: string;
-  email: string;
-  destroyAdmin: (id: number) => void;
-  showAdmin: (id: number) => void;
-}
-
-export const Admin = (props: AdminProps) => {
+export const Admin = ({ index, id, name, email, destroyAdmin }: AdminProps) => {
   return (
-    <>
-      <tr>
-        <td>{props.index + 1}</td>
-        <td>{props.id}</td>
-        <td>{props.name}</td>
-        <td>{props.email}</td>
-        <td>
-          <Router>
-            <Button variant='info' href={`/routers/${props.id}`}>
-              詳細
-            </Button>
-          </Router>
-
-          <Button variant='danger' onClick={() => props.destroyAdmin(props.id)}>
-            削除
+    <tr>
+      <td>{index + 1}</td>
+      <td>{id}</td>
+      <td>{name}</td>
+      <td>{email}</td>
+      <td>
+        <Router>
+          <Button variant='info' href={`/routers/${id}`}>
+            詳細
           </Button>
-        </td>
-      </tr>
-    </>
+        </Router>
+
+        <Button variant='danger' onClick={() => destroyAdmin(id)}>
+          削除
+        </Button>
+      </td>
+    </tr>
   );
 };
