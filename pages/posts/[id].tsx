@@ -5,8 +5,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ADMIN_URL } from './url';
-import { AdminProps } from '../api/types';
+import { ADMIN_URL } from '../../constants/url';
+import { AdminProps } from '../../constants/types';
 
 const RoutersPage: NextPage = () => {
   const router = useRouter();

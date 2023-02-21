@@ -7,8 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ADMIN_URL } from './routers/url';
-import { AdminProps } from './api/types';
+import { ADMIN_URL } from '../constants/url';
+import { AdminProps } from '../constants/types';
 
 export default function AdminsList() {
   const [admins, setAdmins] = useState<AdminProps[]>([]);

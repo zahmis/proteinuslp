@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { AdminProps } from 'pages/api/types';
+import { AdminProps } from 'constants/types';
 
 export const Admin = ({ index, id, name, email, destroyAdmin }: AdminProps) => {
   return (
@@ -11,7 +11,7 @@ export const Admin = ({ index, id, name, email, destroyAdmin }: AdminProps) => {
       <td>{email}</td>
       <td>
         <Router>
-          <Button variant='info' href={`/routers/${id}`}>
+          <Button variant='info' href={`/posts/${id}`}>
             詳細
           </Button>
         </Router>
