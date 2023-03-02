@@ -94,7 +94,6 @@ export default function AdminsList() {
     if (helperMessage.name || helperMessage.email) return false;
     return true;
   };
-  console.log(canSubmit());
 
   type HelperMessageProps = {
     message?: string;
