@@ -28,8 +28,6 @@ export default function Home() {
     getUsers();
   }, []);
 
-  console.log(users);
-
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleHeartClick = () => {

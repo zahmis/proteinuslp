@@ -1,30 +1,33 @@
-import { Navbar } from '../components/Navbar';
 import React, { useState, useEffect } from 'react';
-import { Admin } from '../components/Admin';
 import axios from 'axios';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Button, Form, Table } from 'react-bootstrap';
+import { Navbar } from '../components/Navbar';
+import { Admin } from '../components/Admin';
 import { ADMIN_URL } from '../constants/url';
 import { AdminProps } from '../constants/types';
 import Validation from '../validations/Validation';
+import { HelperMessage } from 'types/admin';
 
 export default function AdminsList() {
   const [admins, setAdmins] = useState<AdminProps[]>([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState<string | undefined>();
+  const [email, setEmail] = useState<string | undefined>();
 
-  const [info, setInfo] = useState({
-    name: '',
-    email: '',
-  });
-  const [message, setMessage] = useState({
-    name: '',
-    email: '',
+  const [helperMessage, setHelperMessage] = useState<HelperMessage>({
+    name: undefined,
+    email: undefined,
   });
   const [loading, setLoading] = useState(false);
+
+  const fetchAdmins = async () => {
+    const res = await axios.get<AdminProps[]>(`${ADMIN_URL}`);
+    setAdmins(res.data);
+  };
+
+  useEffect(() => {
+    fetchAdmins();
+  }, []);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -32,74 +35,79 @@ export default function AdminsList() {
     const key = event.target.name;
     const value = event.target.value;
 
-    setInfo({
-      ...info,
-      [key]: value,
-    });
-    setMessage({
-      ...message,
+    switch (key) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      default:
+        break;
+    }
+
+    setHelperMessage({
+      ...helperMessage,
       [key]: Validation.formValidate(key, value),
     });
   };
 
-  const fetch = async () => {
-    const res = await axios.get<AdminProps[]>(`${ADMIN_URL}`);
-    setAdmins(res.data);
-  };
-
   const createAdmin = async () => {
-    setLoading(true);
-    await axios.post(`${ADMIN_URL}`, {
-      name: name,
-      email: email,
-    });
-    setName('');
-    setEmail('');
-    setInfo({
-      name: '',
-      email: '',
-    });
-    setMessage({
-      name: '',
-      email: '',
-    });
-    fetch();
+    try {
+      setLoading(true);
+      await axios.post(`${ADMIN_URL}`, {
+        name: name,
+        email: email,
+      });
+    } catch (error) {
+      // TODO: いい感じにする
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
 
-    setLoading(false);
+    fetchAdmins();
   };
 
   const showAdmin = async (id: number) => {
     await axios.get(`${ADMIN_URL}/${id}`);
-    fetch();
+    fetchAdmins();
   };
 
   const destroyaAdmin = async (id: number) => {
-    await axios.delete(`${ADMIN_URL}/${id}`);
-    fetch();
-  };
+    try {
+      setLoading(true);
+      await axios.delete(`${ADMIN_URL}/${id}`);
+    } catch (error) {
+      // TODO: いい感じにする
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
 
-  useEffect(() => {
-    fetch();
-  }, []);
+    fetchAdmins();
+  };
 
   const canSubmit = (): boolean => {
-    const validInfo =
-      Object.values(info).filter((value) => {
-        return value === '';
-      }).length === 0;
-    const validMessage =
-      Object.values(message).filter((value) => {
-        return value !== '';
-      }).length === 0;
-    return validInfo && validMessage && !loading;
+    if (loading) return false;
+    if (name == null || email == null) return false;
+    if (helperMessage.name || helperMessage.email) return false;
+    return true;
   };
+
+  type HelperMessageProps = {
+    message?: string;
+  };
+  const HelperMessage = ({ message }: HelperMessageProps) => (
+    <p style={{ color: 'red', fontSize: 14 }}>{message}</p>
+  );
 
   return (
     <>
       <Navbar />
       <Container>
         <h1 className='mt-3'>管理者一覧</h1>
-
+        {/* ここは簡易的に Bootstrap を使う */}
         <Form className='mb-3'>
           <Form.Group className='mb-3' controlId='formBasicName'>
             <Form.Label>Name</Form.Label>
@@ -107,16 +115,10 @@ export default function AdminsList() {
               type='name'
               name='name'
               placeholder='名前を入力'
-              value={info.name}
-              onChange={(e) => {
-                setName(e.target.value);
-                handleChange(e);
-              }}
+              value={name}
+              onChange={handleChange}
             />
-            {message.name && (
-              <p style={{ color: 'red', fontSize: 14 }}>{message.name}</p>
-            )}
-            <Form.Text className='text-muted'></Form.Text>
+            <HelperMessage message={helperMessage.name} />
           </Form.Group>
 
           <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -125,15 +127,11 @@ export default function AdminsList() {
               type='email'
               name='email'
               placeholder='アドレスを入力'
-              value={info.email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                handleChange(e);
-              }}
+              value={email}
+              onChange={handleChange}
             />
-            {message.email && (
-              <p style={{ color: 'red', fontSize: 14 }}>{message.email}</p>
-            )}
+
+            <HelperMessage message={helperMessage.email} />
           </Form.Group>
           <Button
             variant='primary'
